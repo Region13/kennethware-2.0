@@ -74,7 +74,7 @@ function klPageContentCheck(klContentWrapperElement) {
   
     if(window.kennethwareKlPageContentCheck > 6){
       delete window.kennethwareKlPageContentCheck;
-      console.log('Content loaded check timed out for (' + klContentWrapperElement + ')';
+      console.log('Content loaded check timed out for (' + klContentWrapperElement + ')');
       return false;
     }
 
