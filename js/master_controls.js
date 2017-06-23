@@ -67,15 +67,26 @@ function klPageContentCheck(klContentWrapperElement) {
     } else if ($('#course_syllabus').length > 0) {
         contentLoaded = true;
     }
+  
+    if(!window.hasOwnProperty('kennethwareKlPageContentCheck')){
+      window.kennethwareKlPageContentCheck = 0;
+    }
+  
+    if(window.kennethwareKlPageContentCheck > 6){
+      console.log('Content loaded check timed out for (' + klContentWrapperElement + ')';
+      return false;
+    }
 
     if (contentLoaded) {
+        delete window.kennethwareKlPageContentCheck;
         console.log('Content has loaded');
         klAfterContentLoaded();
     } else {
+        window.kennethwareKlPageContentCheck++;
         setTimeout(function () {
             console.log('Still no content, check again (' + klContentWrapperElement + ')');
             klPageContentCheck(klContentWrapperElement);
-        }, 100);
+        }, 500);
     }
 }
 // Load tools dependent code
